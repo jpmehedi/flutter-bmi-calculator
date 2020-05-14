@@ -18,6 +18,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 180;
+  int weight = 40;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -83,8 +85,7 @@ class _InputPageState extends State<InputPage> {
                     children: <Widget>[
                       Text(
                         height.toString(),
-                        style: TextStyle(
-                            fontSize: 38.0, fontWeight: FontWeight.w900),
+                        style: kNumberTextStyle,
                       ),
                       Text(
                         "cm",
@@ -123,11 +124,83 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReuseableCard(
                     color: kActiveCardColor,
+                    cardChild: Column(
+                      children: <Widget>[
+                        Text(
+                          "Weight",
+                          style: kLevelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RoundedButtonBuilder(
+                              onPres: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                              icon: Icon(FontAwesomeIcons.minus),
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundedButtonBuilder(
+                              onPres: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                              icon: Icon(FontAwesomeIcons.plus),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ReuseableCard(
                     color: kActiveCardColor,
+                    cardChild: Column(
+                      children: <Widget>[
+                        Text(
+                          "Age",
+                          style: kLevelTextStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RoundedButtonBuilder(
+                              onPres: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                              icon: Icon(FontAwesomeIcons.minus),
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundedButtonBuilder(
+                              onPres: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                              icon: Icon(FontAwesomeIcons.plus),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -148,6 +221,26 @@ class _InputPageState extends State<InputPage> {
           )
         ],
       ),
+    );
+  }
+}
+
+class RoundedButtonBuilder extends StatelessWidget {
+  RoundedButtonBuilder({@required this.onPres, this.icon});
+  final Function onPres;
+  final Icon icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      fillColor: Colors.teal,
+      onPressed: onPres,
+      constraints: BoxConstraints(
+        minHeight: 40.0,
+        minWidth: 40.0,
+      ),
+      child: icon,
     );
   }
 }

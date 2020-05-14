@@ -11,3 +11,8 @@ const TextStyle kLevelTextStyle = TextStyle(
   color: Colors.teal,
   fontStyle: FontStyle.italic,
 );
+const TextStyle kNumberTextStyle = TextStyle(
+  fontSize: 38.0,
+  fontWeight: FontWeight.w900,
+  color: Colors.white,
+);
