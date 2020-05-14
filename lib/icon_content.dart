@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './constraint.dart';
 
 class IconContent extends StatelessWidget {
   IconContent({this.icon, this.level});
@@ -20,11 +21,7 @@ class IconContent extends StatelessWidget {
         ),
         Text(
           level,
-          style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.teal,
-              fontStyle: FontStyle.italic),
+          style: kLevelTextStyle,
         )
       ],
     );
