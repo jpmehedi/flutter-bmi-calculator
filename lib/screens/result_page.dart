@@ -3,7 +3,17 @@ import 'package:bmi_calculator/constraint.dart';
 
 import '../materials/large_button.dart';
 import '../materials/reuseable_card.dart';
+
 class ResultPage extends StatelessWidget {
+  ResultPage(
+      {@required this.clculateBmi,
+      @required this.bmiResult,
+      @required this.bmiSummary});
+
+  final String clculateBmi;
+  final String bmiResult;
+  final String bmiSummary;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,21 +38,21 @@ class ResultPage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      "Normal".toUpperCase(),
+                      bmiResult.toUpperCase(),
                       style: kResultTextStyle,
                     ),
                   ),
                   Container(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      "18.2".toUpperCase(),
+                      clculateBmi,
                       style: kBMItextStyle,
                     ),
                   ),
                   Container(
                     padding: const EdgeInsets.all(20.0),
                     child: Text(
-                      "The Quick Brown fox jumps over the lazy dog",
+                      bmiSummary,
                       textAlign: TextAlign.justify,
                       style: kResultDescriptionTextStyle,
                     ),

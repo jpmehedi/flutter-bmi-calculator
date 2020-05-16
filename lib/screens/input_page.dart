@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -8,7 +7,7 @@ import '../materials/icon_content.dart';
 import '../materials/large_button.dart';
 import '../materials/rounded_button.dart';
 import '../screens/result_page.dart';
-
+import '../bmi_brain.dart';
 
 enum Gender {
   male,
@@ -214,8 +213,17 @@ class _InputPageState extends State<InputPage> {
           LargeButtonBuilder(
             text: "Calculate",
             onTap: () {
-              var route = MaterialPageRoute(builder: (context) => ResultPage());
-              Navigator.push(context, route);
+              BmiBrain _calc = BmiBrain(height: height, weight: weight);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(
+                    clculateBmi: _calc.clculateBmi(),
+                    bmiResult: _calc.bmiResult(),
+                    bmiSummary: _calc.bmiSummary(),
+                  ),
+                ),
+              );
             },
           )
         ],
@@ -223,7 +231,3 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-
-
-
-
