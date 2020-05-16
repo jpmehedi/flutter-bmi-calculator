@@ -1,11 +1,14 @@
-import 'package:bmi_calculator/result_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import './icon_content.dart';
-import './reuseable_card.dart';
-import './constraint.dart';
-import './result_page.dart';
+import '../constraint.dart';
+import '../materials/reuseable_card.dart';
+import '../materials/icon_content.dart';
+import '../materials/large_button.dart';
+import '../materials/rounded_button.dart';
+import '../screens/result_page.dart';
+
 
 enum Gender {
   male,
@@ -208,24 +211,12 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          LargeButtonBuilder(
+            text: "Calculate",
             onTap: () {
-              var route =MaterialPageRoute(builder: (context)=>ResultPage());
+              var route = MaterialPageRoute(builder: (context) => ResultPage());
               Navigator.push(context, route);
             },
-            child: Container(
-              height: kBottomButtonHeight,
-              width: double.infinity,
-              color: kBottomButtonColor,
-              child: Center(
-                  child: Text(
-                "Calculate",
-                style: TextStyle(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal),
-              )),
-            ),
           )
         ],
       ),
@@ -233,22 +224,6 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class RoundedButtonBuilder extends StatelessWidget {
-  RoundedButtonBuilder({@required this.onPres, this.icon});
-  final Function onPres;
-  final Icon icon;
 
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      fillColor: Colors.teal,
-      onPressed: onPres,
-      constraints: BoxConstraints(
-        minHeight: 40.0,
-        minWidth: 40.0,
-      ),
-      child: icon,
-    );
-  }
-}
+
+

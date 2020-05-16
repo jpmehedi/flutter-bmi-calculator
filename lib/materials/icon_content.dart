@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './constraint.dart';
+import '../constraint.dart';
 
 class IconContent extends StatelessWidget {
   IconContent({this.icon, this.level});
